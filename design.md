@@ -19,8 +19,8 @@ The system follows a hybrid mobile architecture with on-device AI processing for
 ## Architecture
 
 ### Aws architecture diagram
--[Krishi-Netra-Architecture]
-(aws_diagram.png)
+![Krishi-Netra-Architecture](aws_diagram.png)
+
 
 
 ### Comprehensive Architecture Diagram
@@ -1091,3 +1091,4 @@ This comprehensive testing strategy ensures Krishi-Netra delivers reliable, accu
 *For any* 24-hour period with network connectivity, the system should update pricing data at least twice to ensure current market information
 
 **Validates: Requirements 5.3.5**
+
