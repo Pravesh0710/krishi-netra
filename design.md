@@ -19,74 +19,8 @@ The system follows a hybrid mobile architecture with on-device AI processing for
 ## Architecture
 
 ### Aws architecture diagram
-
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                           KRISHI-NETRA AWS ARCHITECTURE                      │
-└─────────────────────────────────────────────────────────────────────────────┘
-
-┌─────────────────┐    ┌─────────────────────────────────────────────────────┐
-│   USERS         │    │              MOBILE APPLICATION                     │
-│                 │    │                                                     │
-│ Indian Farmers  │◄──►│  ┌─────────────────┐  ┌─────────────────────────┐  │
-│ Crop Buyers     │    │  │ Krishi-Netra    │  │    Local Storage        │  │
-│                 │    │  │ Mobile App      │◄─┤ SQLite Database        │  │
-└─────────────────┘    │  │ (Android/Kotlin)│  │ Offline ML Models       │  │
-                       │  └─────────────────┘  └─────────────────────────┘  │
-                       └─────────────────────────────────────────────────────┘
-                                           │
-                                           │ HTTPS/REST API
-                                           ▼
-                       ┌─────────────────────────────────────────────────────┐
-                       │                 API GATEWAY                         │
-                       │          ┌─────────────────────────┐                │
-                       │          │   Amazon API Gateway   │                │
-                       │          │   Authentication        │                │
-                       │          │   Rate Limiting         │                │
-                       │          └─────────────────────────┘                │
-                       └─────────────────────────────────────────────────────┘
-                                           │
-                                           ▼
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                           BACKEND SERVICES                                  │
-│                                                                             │
-│  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐  ┌─────────────────┐   │
-│  │    Auth     │  │   Price     │  │     ML      │  │   Certificate   │   │
-│  │  Service    │  │  Service    │  │  Service    │  │    Service      │   │
-│  │  (Lambda)   │  │  (Lambda)   │  │  (Lambda)   │  │   (Lambda)      │   │
-│  └─────────────┘  └─────────────┘  └─────────────┘  └─────────────────┘   │
-└─────────────────────────────────────────────────────────────────────────────┘
-         │                  │                  │                  │
-         ▼                  ▼                  ▼                  ▼
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                          AI/ML SERVICES                                     │
-│                                                                             │
-│  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐  ┌─────────────────┐   │
-│  │   Amazon    │  │   Amazon    │  │   Amazon    │  │    Amazon       │   │
-│  │   Bedrock   │  │ Rekognition │  │ Transcribe  │  │     Polly       │   │
-│  │             │  │             │  │             │  │                 │   │
-│  └─────────────┘  └─────────────┘  └─────────────┘  └─────────────────┘   │
-└─────────────────────────────────────────────────────────────────────────────┘
-         │                  │                  │                  │
-         ▼                  ▼                  ▼                  ▼
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                         DATA STORAGE                                        │
-│                                                                             │
-│  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐  ┌─────────────────┐   │
-│  │ PostgreSQL  │  │   Amazon    │  │   Amazon    │  │   ElastiCache   │   │
-│  │    RDS      │  │     S3      │  │  DynamoDB   │  │     Redis       │   │
-│  │             │  │             │  │             │  │                 │   │
-│  └─────────────┘  └─────────────┘  └─────────────┘  └─────────────────┘   │
-└─────────────────────────────────────────────────────────────────────────────┘
-                                           │
-                                           ▼
-                       ┌─────────────────────────────────────────────────────┐
-                       │              EXTERNAL SERVICES                      │
-                       │                                                     │
-                       │  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐ │
-                       │  │ Government  │  │   Weather   │  │  Location   │ │
-                       │  │ Mandi APIs  │  │  Services   │  │  Services   │ │
-                       │  └─────────────┘  └─────────────┘  └─────────────┘ │
-                       └─────────────────────────────────────────────────────┘
+-[Krishi-Netra-Architecture]
+(aws_diagram.png)
 
 
 ### Comprehensive Architecture Diagram
@@ -1155,4 +1089,5 @@ This comprehensive testing strategy ensures Krishi-Netra delivers reliable, accu
 
 ### Property 26: Price Update Frequency
 *For any* 24-hour period with network connectivity, the system should update pricing data at least twice to ensure current market information
+
 **Validates: Requirements 5.3.5**
